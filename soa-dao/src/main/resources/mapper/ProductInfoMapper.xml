@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.server.soa.dao.mysql.mapper.ProductInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.server.soa.dao.mysql.domain.ProductInfo">
+    <id column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+    <result column="product_stock" jdbcType="INTEGER" property="productStock" />
+    <result column="product_image_url" jdbcType="VARCHAR" property="productImageUrl" />
+    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_id, product_name, product_price, product_stock, product_image_url, category_id,
+    status, gmt_create, gmt_modified
+  </sql>
+  <insert id="insert" parameterType="com.example.server.soa.dao.mysql.domain.ProductInfo">
+    insert into product_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+      <if test="productStock != null">
+        product_stock,
+      </if>
+      <if test="productImageUrl != null">
+        product_image_url,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productStock != null">
+        #{productStock,jdbcType=INTEGER},
+      </if>
+      <if test="productImageUrl != null">
+        #{productImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from product_info
+    where product_id = #{productId,jdbcType=BIGINT} and status=0
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from product_info where status=0
+  </select>
+  <update id="updateById" parameterType="com.example.server.soa.dao.mysql.domain.ProductInfo">
+    update product_info
+    <set>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productStock != null">
+        product_stock = #{productStock,jdbcType=INTEGER},
+      </if>
+      <if test="productImageUrl != null">
+        product_image_url = #{productImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=BIGINT} and status=0
+  </update>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    update product_info set status=3
+    where product_id = #{productId,jdbcType=BIGINT}
+  </delete>
+</mapper>
