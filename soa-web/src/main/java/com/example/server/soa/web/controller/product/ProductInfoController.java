@@ -7,16 +7,16 @@ import com.example.server.soa.web.controller.base.BaseController;
 import com.example.server.soa.dao.mysql.domain.ProductInfo;
 import com.example.server.soa.service.product.ProductInfoService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
 @Slf4j
 public class ProductInfoController extends BaseController {
 
-    @Resource
+    @Autowired
     private ProductInfoService productInfoService;
 
     @PostMapping("/productinfo/create")

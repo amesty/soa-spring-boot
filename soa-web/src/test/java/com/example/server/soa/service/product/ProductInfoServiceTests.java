@@ -4,10 +4,10 @@ import com.example.server.soa.dao.mysql.domain.ProductInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 public class ProductInfoServiceTests {
 
-    @Resource
+    @Autowired
     private ProductInfoService productInfoService;
 
     @Test

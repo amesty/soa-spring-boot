@@ -22,8 +22,8 @@ public class QuartzConfig {
     /**
      * 任务1配置
      */
-    @Bean
-    public CmsActivityConfig cmsActivityConfig() {
+    @Bean(initMethod = "init")
+    public CmsActivityConfigImpl cmsActivityConfig() {
         return new CmsActivityConfigImpl();
     }
 
@@ -47,8 +47,8 @@ public class QuartzConfig {
     /**
      * 任务2配置
      */
-    @Bean
-    public CmsCategoryConfig cmsCategoryConfig() {
+    @Bean(initMethod = "init")
+    public CmsCategoryConfigImpl cmsCategoryConfig() {
         return new CmsCategoryConfigImpl();
     }
 

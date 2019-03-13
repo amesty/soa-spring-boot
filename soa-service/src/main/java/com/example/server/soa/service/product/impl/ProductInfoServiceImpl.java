@@ -6,17 +6,17 @@ import com.example.server.soa.service.base.BaseService;
 import com.example.server.soa.service.product.ProductInfoService;
 import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 @Slf4j
 public class ProductInfoServiceImpl extends BaseService implements ProductInfoService {
 
-    @Resource
+    @Autowired
     private ProductInfoMapper productInfoMapper;
 
     @Transactional(rollbackFor = Exception.class)

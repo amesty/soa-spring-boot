@@ -4,8 +4,6 @@ import com.example.server.soa.rpc.base.BaseRpc;
 import com.example.server.soa.rpc.config.CmsCategoryConfig;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.annotation.PostConstruct;
-
 @Slf4j
 public class CmsCategoryConfigImpl extends BaseRpc implements CmsCategoryConfig {
 
@@ -14,7 +12,6 @@ public class CmsCategoryConfigImpl extends BaseRpc implements CmsCategoryConfig 
         return null;
     }
 
-    @PostConstruct // 等同于xml中的init-method="init"配置
     public void init() {
         executeUpdateCmsConfig();
     }
